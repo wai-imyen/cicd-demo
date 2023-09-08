@@ -7,6 +7,12 @@ stages:
 variables:
   MY_NAME: "yenyen"
 
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: always
+    - when: never
+
 pint:
   stage: "linter"
   script:
