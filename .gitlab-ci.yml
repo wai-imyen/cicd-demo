@@ -6,8 +6,16 @@ stages:
 
 pint:
   stage: "linter"
+  needs:
+    - bad_job
   script:
-    - echo "coding style 檢查"
+    - echo "pint 檢查"
+
+bad_job:
+  stage: "linter"
+  script:
+    - echo "Bad Job"
+    - dfodjfodjfiodjfodfjao
 
 run_tests:
   stage: "testing"
