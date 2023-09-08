@@ -4,9 +4,13 @@ stages:
   - "build"
   - "deploy"
 
+variables:
+  MY_NAME: "yenyen"
+
 pint:
   stage: "linter"
   script:
+    - echo "Hello $MY_NAME"
     - echo "pint 檢查"
     - chmod +x ./pint.sh
     - ./pint.sh
