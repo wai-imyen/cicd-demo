@@ -10,26 +10,28 @@ pint:
     - echo "pint 檢查"
     - chmod +x ./pint.sh
     - ./pint.sh
-
-bad_job:
-  stage: "testing"
+lint:
+  stage: "linter"
+  needs:
+    - pint
   script:
-    - echo "Bad Job"
-    - dfodjfodjfiodjfodfjao
+    - echo "lint 檢查"
 
 run_tests:
   stage: "testing"
-  needs:
-    - bad_job
   script:
     - echo "執行 testing 檢查"
 
 build_image:
   stage: "build"
+  only:
+    - main
   script:
     - echo "打包 docker image"
 
 deploy:
   stage: "deploy"
+  only:
+    - main
   script:
     - echo "部署至主機"
