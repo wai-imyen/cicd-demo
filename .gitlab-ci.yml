@@ -6,19 +6,21 @@ stages:
 
 pint:
   stage: "linter"
-  needs:
-    - bad_job
   script:
     - echo "pint 檢查"
+    - chmod +x ./pint.sh
+    - ./pint.sh
 
 bad_job:
-  stage: "linter"
+  stage: "testing"
   script:
     - echo "Bad Job"
     - dfodjfodjfiodjfodfjao
 
 run_tests:
   stage: "testing"
+  needs:
+    - bad_job
   script:
     - echo "執行 testing 檢查"
 
