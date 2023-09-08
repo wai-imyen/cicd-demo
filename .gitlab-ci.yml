@@ -1,3 +1,25 @@
-helloworld:
+stages:
+  - "linter"
+  - "testing"
+  - "build"
+  - "deploy"
+
+pint:
+  stage: "linter"
   script:
-    - echo "Hello World, CICD-Demo!"
+    - echo "coding style 檢查"
+
+run_tests:
+  stage: "testing"
+  script:
+    - echo "執行 testing 檢查"
+
+build_image:
+  stage: "build"
+  script:
+    - echo "打包 docker image"
+
+deploy:
+  stage: "deploy"
+  script:
+    - echo "部署至主機"
